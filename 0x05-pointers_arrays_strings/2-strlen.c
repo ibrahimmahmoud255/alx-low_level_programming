@@ -1,43 +1,19 @@
 #include "main.h"
 
 /**
- * _atoi - converts a string to an integer
- * @s: string to be converted
- * Return: integers in a string
+ * _strlen - a function that returns the length of a string
+ * @s: char input
+ * Return: length of the input string
  */
-
-int _atoi(char *s)
+int _strlen(char *s)
 {
-	int num, len, numcount, mult, x, neg;
+	int i = 1, sum = 0;
+	char pl = s[0];
 
-	len = 0;
-	x = 0;
-	numcount = 0;
-	mult = 1;
-	neg = 1;
-	num = 0;
-
-	while (s[len] != '\0')
+	while (pl != '\0')
 	{
-		if (s[len] >= '0' && s[len] <= '9')
-		{
-			numcount++;
-			if (!(s[len + 1] >= '0' && s[len + 1] <= '9'))
-				break;
-		}
-		len++;
+		sum++;
+		pl = s[i++];
 	}
-	for (; numcount > 1; numcount--)
-		mult *= 10;
-	for (; x <= len; x++)
-	{
-		if (s[x] == '-')
-			neg *= -1;
-		else if (s[x] <= '9' && s[x] >= '0')
-		{
-			num += (s[x] - '0') * mult * neg;
-			mult /= 10;
-		}
-	}
-	return (num);
+	return (sum);
 }
